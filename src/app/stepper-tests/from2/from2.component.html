@@ -1,0 +1,12 @@
+<form [formGroup]="secondFormGroup1">
+
+  <ng-template matStepLabel>Fill out your address</ng-template>
+  <mat-form-field>
+    <input matInput placeholder="Minh vuong" formControlName="secondCtrl1" required>
+  </mat-form-field>
+  <div>
+    <button mat-button matStepperPrevious>Back</button>
+    <button mat-button matStepperNext>Next</button>
+  </div>
+
+</form>

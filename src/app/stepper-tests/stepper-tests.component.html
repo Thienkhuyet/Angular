@@ -1,0 +1,44 @@
+<!-- <button mat-raised-button (click)="isOptional = !isOptional">
+  {{!isOptional ? 'Enable optional steps' : 'Disable optional steps'}}
+</button>
+<button mat-raised-button (click)="isOptional1 = !isOptional1">
+  {{!isOptional1 ? 'Enable optional steps' : 'Disable optional steps'}}
+</button> -->
+<mat-horizontal-stepper linear #stepper>
+  <mat-step [stepControl]="firstFormGroup">
+    <button (click)="onChangeDate()">Chang date</button>
+    <form [formGroup]="firstFormGroup">
+      <mat-form-field>
+        <input matInput [matDatepicker]="picker" (focus)="picker.open()" placeholder="Choose a date">
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+      <!-- <mat-card>
+        <mat-calendar [startAt]="startAt"></mat-calendar>
+      </mat-card> -->
+      <ng-template matStepLabel>Fill out your name</ng-template>
+      <mat-form-field>
+        <input matInput placeholder="Last name, First name" formControlName="firstCtrl" required>
+      </mat-form-field>
+      <div>
+        <button mat-button matStepperNext>Next</button>
+      </div>
+    </form>
+  </mat-step>
+  <mat-step [stepControl]="secondFormGroup">
+    <app-from1 [secondFormGroup]="secondFormGroup" [_formBuilder]="_formBuilder"></app-from1>
+  </mat-step>
+
+  <mat-step [stepControl]="secondFormGroup1">
+    <app-from2 [secondFormGroup1]="secondFormGroup1" [_formBuilder]="_formBuilder"></app-from2>
+  </mat-step>
+
+  <mat-step>
+    <ng-template matStepLabel>Done</ng-template>
+    You are now done.
+    <div>
+      <button mat-button matStepperPrevious>Back</button>
+      <button mat-button (click)="stepper.reset()">Reset</button>
+    </div>
+  </mat-step>
+</mat-horizontal-stepper>
